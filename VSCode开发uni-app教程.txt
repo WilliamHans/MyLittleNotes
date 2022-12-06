@@ -30,6 +30,8 @@
 既然是使用vue脚手架，那肯定要全局安装`@vue/cli`，已安装的可以跳过。
 
 > **注意**：Vue2创建的项目，脚手架版本要用@4的版本，用@5的版本运行项目会报错，这里推荐 **@4.5.15**
+>
+> **Hans**:	其实脚手架@3或者@4都可以
 
 ```bash
 npm install -g @vue/cli@4.5.15
@@ -39,11 +41,26 @@ npm install -g @vue/cli@4.5.15
 创建项目，后面是你的项目名字。
 
 ```bash
-vue create -p dcloudio/uni-preset-vue uni_vue2_cli
+vue create -p dcloudio/uni-preset-vue (项目名称:)uni_vue2_cli
 复制代码
 ```
 
-这里我们选择**默认模板**。
+**Hans:** 这里可能遇到**路径问题**,上面代码中的"**dcloudio/uni-preset-vue**"是uni-preset-vue 的网络路径,然而中国没办法直接访问github,所以:
+
+**解决办法**：
+用git拉取 https://[github](https://so.csdn.net/so/search?q=github&spm=1001.2101.3001.7020).com/dcloudio/uni-preset-vue,或者直接下载,但请注意目录位置,必须在盘符之下(即必须在
+
+D:\uni-preset-vue 而不能在
+
+D:\Program Files\HtmlData\uni-preset-vue
+
+)
+然后把路径替换就可以啦
+![在这里插入图片描述](https://img-blog.csdnimg.cn/818b6bf3b7f1491db654d0da394d4f9f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Yqq5Yqb55Sf5rS755qE5Luj56CB54y_,size_19,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
+
+之后我们选择**默认模板**。
 
 ![image-20220425115206383](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eb429ef10d764fcd8c4f29032955b5f8~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp)
 
