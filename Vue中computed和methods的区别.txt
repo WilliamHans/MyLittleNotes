@@ -1,0 +1,65 @@
+Vue中computed和methods的区别-为什么methods调用需要带括号
+
+学习的时候发现这样的问题:
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <script src="./day.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2>显示格式化后的时间</h2>
+        <!-- 计算属性实现 -->
+        <h3>现在是:{{fmtTime}}</h3>
+        <!-- methods实现 -->
+        <h3>现在是:{{getFmtTime}}</h3>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#root',
+            data() {
+                return {
+                    time:'1621561377603',
+                }
+            },
+            computed: {
+                fmtTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            methods: {
+                getFmtTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+        })
+    </script>
+</body>
+</html>
+```
+
+![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+
+ 而调试的时候却发现用methods方法实现出现了这种情况：
+
+现在是:function () { [native code] } 
+
+后确认是methods忘记添加括号导致。
+
+### 至于为什么computed为什么不像methods一样使用小括号调用？
+
+computed本身就是一个属性，其本质是computed内部有两个方法（set和get），computed最终的得到的结果是get方法的返回值，而set方法很少使用到，因此简化写法就是上述正常使用computed的格式。
+
+### computed和methods的区别？
+
+1、methods使用时，一般情况需要加括号，而computed则不需要。
+
+2、methods每次调用时会重新执行函数，而computed在其内部变量不变或其返回值不变的情况下多次调用只会执行一次，后续执行时直接从缓存中获取该computed的结果。
