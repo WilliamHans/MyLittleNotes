@@ -1,0 +1,7 @@
+# node 中 创建新的脚手架时遇到的问题
+
+#### npm install 安装依赖时，出现 operation not permitted, mkdir 目录 可以看一下几点：、
+
+1.在C:\Users\Administrator 中删除.npmrc文件。
+
+2.因为没有权限，则可以：win + r， 输入cmd， 快捷键ctrl + shift + enter
